@@ -1,0 +1,60 @@
+{{#if items.length}}
+  <div class="onboarding-holder full-screen loading" data-onboarding-id="{{id}}" {{#if fullImageConfig}}style="background-image: url('{{fullImageConfig.url}}')"{{/if}}>
+    <div class="onboarding-wrapper">
+      {{#if skipEnabled}}
+      <div class="ob-top-nav">
+        <div class="ob-skip"><span>Skip</span></div>
+      </div>
+      {{/if}}
+      <div class="onboarding-content">
+        <div class="swiper-container">
+          <div class="swiper-wrapper {{#if animationEnabled}}animated{{/if}}">
+            {{#each items}}
+            <div class="swiper-slide" data-slider-id="{{id}}">
+              <div class="swiper-slide-content">
+                {{#if imageConf}}
+                <img src="{{imageConf.url}}" /> {{/if}}
+                <h1>{{title}}</h1> {{#if description}}
+                <p>{{nl2br description}}</p>{{/if}} {{#if linkAction.action}}<input data-slide-button-id="{{id}}" type="button" class="btn btn-primary" value="{{#if linkLabel}}{{linkLabel}}{{else}}Continue{{/if}}" />{{/if}}
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+        <!-- Create handlebars IF condition when necessary to hide -->
+        <div class="swiper-button-prev swiper-button-prev-{{id}}"><i class="fa fa-angle-left"></i></div>
+        <div class="swiper-button-next swiper-button-next-{{id}}"><i class="fa fa-angle-right"></i></div>
+
+        <div class="ob-bottom-nav">
+          <div class="swiper-pagination swiper-pagination-{{id}}"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{else}}
+<div class="onboarding-holder placeholder">
+  <div class="onboarding-content">
+    <div class="ob-top-nav">
+      <div class="ob-skip"><span>Skip</span></div>
+    </div>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="image-holder">
+            <i class="fa fa-picture-o"></i>
+          </div>
+          <h1>Parturient Ridiculus Magna</h1>
+          <p>Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+            <br>
+            <br> Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+    <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+    <div class="ob-bottom-nav">
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</div>
+{{/if}}
