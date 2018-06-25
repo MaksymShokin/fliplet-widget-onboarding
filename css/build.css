@@ -5,7 +5,8 @@ body.fl-with-top-menu {
 
 .fl-viewport-header,
 .fl-menu-circle-header,
-.fl-bottom-bar-menu-holder {
+.fl-bottom-bar-menu-holder,
+.fl-bottom-bar-menu-holder-mobile {
 	display: none;
 }
 
