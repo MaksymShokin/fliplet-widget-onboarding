@@ -255,7 +255,14 @@ var FlSlider = (function() {
         return;
       }
 
-      data.skipLinkAction = data.skipLinkAction || {};
+      data.skipLinkAction = $.extend(true, {
+        action: 'screen',
+        page: '',
+        transition: 'fade',
+        options: {
+          hideAction: true
+        }
+      }, data.skipLinkAction);
 
       var skipLinkActionProvider = Fliplet.Widget.open('com.fliplet.link', {
         // If provided, the iframe will be appended here,
@@ -288,7 +295,14 @@ var FlSlider = (function() {
         return;
       }
 
-      data.seenLinkAction = data.seenLinkAction || {};
+      data.seenLinkAction = $.extend(true, {
+        action: 'screen',
+        page: '',
+        transition: 'fade',
+        options: {
+          hideAction: true
+        }
+      }, data.seenLinkAction);
 
       var skipSeenLinkActionProvider = Fliplet.Widget.open('com.fliplet.link', {
         // If provided, the iframe will be appended here,

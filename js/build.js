@@ -73,14 +73,14 @@ if (config.skipSeenEnabled && !_.isUndefined(config.seenLinkAction) && !_.isEmpt
       return;
     }
 
-    if (config.enableDelay) {
+    if (config.enableDelay && !Fliplet.Env.get('interact')) {
       setTimeout(initOnboarding, delayTime);
     } else {
       initOnboarding();
     }
   });
 } else {
-  if (config.enableDelay) {
+  if (config.enableDelay && !Fliplet.Env.get('interact')) {
     setTimeout(initOnboarding, delayTime);
   } else {
     initOnboarding();
