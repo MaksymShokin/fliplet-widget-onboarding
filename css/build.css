@@ -266,7 +266,8 @@ body.fl-with-top-menu {
 	color: rgba(51, 51, 51, 0.7);
 }
 
-.swiper-wrapper .swiper-slide p + .btn-primary {
+.swiper-wrapper .swiper-slide p + .btn-primary,
+.swiper-wrapper .swiper-slide h1 + .btn-primary {
 	margin-top: 15px;
 }
 
