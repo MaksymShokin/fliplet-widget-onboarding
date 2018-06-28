@@ -3,7 +3,7 @@
   "package": "com.fliplet.onboarding",
   "version": "1.0.0",
   "icon": "img/icon.png",
-  "tags": ["type:component", "category:onboarding"],
+  "tags": ["category:onboarding"],
   "provider_only": false,
   "html_tag": "div",
   "providers": [
