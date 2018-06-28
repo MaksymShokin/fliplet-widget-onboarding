@@ -137,6 +137,7 @@ body.fl-with-top-menu {
 .onboarding-content img {
 	max-width: 100%;
 	height: auto;
+	margin-bottom: 10px;
 }
 
 .ob-top-nav {
@@ -257,7 +258,7 @@ body.fl-with-top-menu {
 
 .swiper-wrapper .swiper-slide h1 {
 	margin-top: 0;
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 
 .swiper-wrapper.animated .swiper-slide h1 {

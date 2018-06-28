@@ -11,9 +11,14 @@ body {
 }
 
 .fl-widget-provider {
+  padding: 15px;
+}
+
+.add-link .fl-widget-provider {
   border: 0;
   width: 100%;
   background-color: transparent;
+  padding: 0;
 }
 
 #action {
