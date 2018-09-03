@@ -50,7 +50,6 @@ body.fl-with-top-menu {
 .onboarding-content {
   position: absolute;
   top: 0;
-  top: env(safe-area-inset-top);
   left: 0;
   right: 0;
   bottom: 0;
