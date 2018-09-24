@@ -45,6 +45,7 @@
     "items.$.linkAction.files.id:mediaFile",
     "skipLinkAction.page:page",
     "seenLinkAction.page:page",
-    "items.$.imageConf.id:mediaFile"
+    "items.$.imageConf.id:mediaFile",
+    "fullImageConfig.id:mediaFile"
   ]
 }

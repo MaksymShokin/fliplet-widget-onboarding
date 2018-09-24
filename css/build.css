@@ -220,11 +220,13 @@ body.fl-with-top-menu {
 }
 
 .onboarding-content .swiper-button-prev .fa {
-	margin-left: -4px;
+	margin-left: -3px;
+  font-size: 32px;
 }
 
 .onboarding-content .swiper-button-next .fa {
-	margin-right: -4px;
+	margin-right: -3px;
+  font-size: 32px;
 }
 
 .onboarding-content .swiper-button-next,
@@ -430,7 +432,9 @@ a {
 
 .platform-web .swiper-button-next,
 .platform-web .swiper-button-prev {
-	display: block;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 @media screen and (min-width: 640px) {
