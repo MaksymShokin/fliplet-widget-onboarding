@@ -1,7 +1,8 @@
 var container = $('[data-onboarding-id]');
 var id = $(container).data('onboarding-id');
+var uuid = Fliplet.Widget.getUUID(id);
 var config = Fliplet.Widget.getData(id);
-var pvKey = 'fl-onboarding-layout-' + id;
+var pvKey = 'fl-onboarding-layout-' + uuid;
 var delayTime = config.delaySlides ? config.delaySlides * 1000 : 3000;
 
 var initOnboarding = function () {
@@ -26,31 +27,29 @@ var initOnboarding = function () {
   });
 
   $(container).find('.ob-skip span').click(function () {
-    var data = Fliplet.Widget.getData( $(this).parents('.onboarding-holder').data('onboarding-id') );
     if (config.skipSeenEnabled) {
       Fliplet.App.Storage.set(pvKey, {
         seen: true
+      }).then(function() {
+        if(!_.isUndefined(config) && (!_.isUndefined(config.skipLinkAction) && !_.isEmpty(config.skipLinkAction))) {
+          Fliplet.Navigate.to(config.skipLinkAction);
+        }
       });
-    }
-
-    if(!_.isUndefined(data) && (!_.isUndefined(data.skipLinkAction) && !_.isEmpty(data.skipLinkAction))) {
-      Fliplet.Navigate.to(data.skipLinkAction);
     }
   });
 
   $(container).find('.btn[data-slide-button-id]').click(function (event) {
     event.preventDefault();
 
-    var data = Fliplet.Widget.getData( $(this).parents('.onboarding-holder').data('onboarding-id') );
-    var itemData = _.find(data.items,{id: $(this).data('slide-button-id')});
+    var itemData = _.find(config.items,{id: $(this).data('slide-button-id')});
     if (config.skipSeenEnabled) {
       Fliplet.App.Storage.set(pvKey, {
         seen: true
+      }).then(function() {
+        if(!_.isUndefined(itemData) && (!_.isUndefined(itemData.linkAction) && !_.isEmpty(itemData.linkAction))) {
+          Fliplet.Navigate.to(itemData.linkAction);
+        }
       });
-    }
-
-    if(!_.isUndefined(itemData) && (!_.isUndefined(itemData.linkAction) && !_.isEmpty(itemData.linkAction))) {
-      Fliplet.Navigate.to(itemData.linkAction);
     }
   });
 }
