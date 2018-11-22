@@ -28,13 +28,17 @@ var initOnboarding = function () {
 
   $(container).find('.ob-skip span').click(function () {
     if (config.skipSeenEnabled) {
-      Fliplet.App.Storage.set(pvKey, {
+      return Fliplet.App.Storage.set(pvKey, {
         seen: true
       }).then(function() {
         if(!_.isUndefined(config) && (!_.isUndefined(config.skipLinkAction) && !_.isEmpty(config.skipLinkAction))) {
           Fliplet.Navigate.to(config.skipLinkAction);
         }
       });
+    }
+
+    if(!_.isUndefined(config) && (!_.isUndefined(config.skipLinkAction) && !_.isEmpty(config.skipLinkAction))) {
+      Fliplet.Navigate.to(config.skipLinkAction);
     }
   });
 
@@ -43,13 +47,17 @@ var initOnboarding = function () {
 
     var itemData = _.find(config.items,{id: $(this).data('slide-button-id')});
     if (config.skipSeenEnabled) {
-      Fliplet.App.Storage.set(pvKey, {
+      return Fliplet.App.Storage.set(pvKey, {
         seen: true
       }).then(function() {
         if(!_.isUndefined(itemData) && (!_.isUndefined(itemData.linkAction) && !_.isEmpty(itemData.linkAction))) {
           Fliplet.Navigate.to(itemData.linkAction);
         }
       });
+    }
+
+    if(!_.isUndefined(itemData) && (!_.isUndefined(itemData.linkAction) && !_.isEmpty(itemData.linkAction))) {
+      Fliplet.Navigate.to(itemData.linkAction);
     }
   });
 }
