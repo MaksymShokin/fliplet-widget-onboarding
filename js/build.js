@@ -75,7 +75,9 @@ if (config.skipSeenEnabled && !_.isUndefined(config.seenLinkAction) && !_.isEmpt
   Fliplet.App.Storage.get(pvKey).then(function(value) {
     if (value && value.seen && !Fliplet.Env.get('interact')) {
       setTimeout(function() {
-        Fliplet.Navigate.to(config.seenLinkAction);
+        Fliplet.Navigate.to(config.seenLinkAction).catch(function () {
+          initOnboarding();
+        });
       }, 800);
       return;
     }
