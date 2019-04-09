@@ -11,7 +11,6 @@ var initOnboarding = function () {
     direction: 'horizontal',
     loop: false,
     autoHeight: true,
-
     pagination: '.swiper-pagination-' + id,
     paginationClickable: true,
     nextButton: '.swiper-button-next-' + id,
@@ -27,36 +26,47 @@ var initOnboarding = function () {
   });
 
   $(container).find('.ob-skip span').click(function () {
+    Fliplet.Analytics.trackEvent({
+      category: 'onboarding',
+      action: 'skip'
+    });
+
     if (config.skipSeenEnabled) {
       return Fliplet.App.Storage.set(pvKey, {
         seen: true
       }).then(function() {
-        if(!_.isUndefined(config) && (!_.isUndefined(config.skipLinkAction) && !_.isEmpty(config.skipLinkAction))) {
+        if (!_.isEmpty(_.get(config, 'skipLinkAction'))) {
           Fliplet.Navigate.to(config.skipLinkAction);
         }
       });
     }
 
-    if(!_.isUndefined(config) && (!_.isUndefined(config.skipLinkAction) && !_.isEmpty(config.skipLinkAction))) {
+    if (!_.isEmpty(_.get(config, 'skipLinkAction'))) {
       Fliplet.Navigate.to(config.skipLinkAction);
     }
   });
 
   $(container).find('.btn[data-slide-button-id]').click(function (event) {
     event.preventDefault();
+    var itemData = _.find(config.items,{ id: $(this).data('slide-button-id') });
 
-    var itemData = _.find(config.items,{id: $(this).data('slide-button-id')});
+    Fliplet.Analytics.trackEvent({
+      category: 'onboarding',
+      action: 'button_click',
+      label: $(this).val()
+    });
+
     if (config.skipSeenEnabled) {
       return Fliplet.App.Storage.set(pvKey, {
         seen: true
       }).then(function() {
-        if(!_.isUndefined(itemData) && (!_.isUndefined(itemData.linkAction) && !_.isEmpty(itemData.linkAction))) {
+        if (!_.isEmpty(_.get(itemData, 'linkAction'))) {
           Fliplet.Navigate.to(itemData.linkAction);
         }
       });
     }
 
-    if(!_.isUndefined(itemData) && (!_.isUndefined(itemData.linkAction) && !_.isEmpty(itemData.linkAction))) {
+    if (!_.isEmpty(_.get(itemData, 'linkAction'))) {
       Fliplet.Navigate.to(itemData.linkAction);
     }
   });
