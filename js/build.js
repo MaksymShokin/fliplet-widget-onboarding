@@ -25,6 +25,10 @@ var initOnboarding = function () {
     swiper.update();
   });
 
+  Fliplet.Hooks.on('appearanceChanged', function () {
+    swiper.update();
+  });
+
   $(container).find('.ob-skip span').click(function () {
     Fliplet.Analytics.trackEvent({
       category: 'onboarding',
