@@ -4,10 +4,8 @@ body.fl-with-top-menu {
 }
 
 .fl-viewport-header,
-.fl-menu-circle-header,
-.fl-menu-circle-nav-holder,
-.fl-bottom-bar-menu-holder,
-.fl-bottom-bar-menu-holder-mobile {
+[data-widget-package="com.fliplet.menu.expandable"],
+[data-widget-package="com.fliplet.menu.bottom-bar"] {
 	display: none !important;
 }
 
