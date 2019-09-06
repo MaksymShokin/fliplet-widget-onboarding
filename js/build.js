@@ -1,23 +1,23 @@
 var container = $('[data-onboarding-id]');
-var id = $(container).data('onboarding-id');
+var id = $('.fl-widget-instance').data('id');
+var sliderId = $(container).data('onboarding-id');
 var uuid = Fliplet.Widget.getUUID(id);
 var config = Fliplet.Widget.getData(id);
 var pvKey = 'fl-onboarding-layout-' + uuid;
 var delayTime = config.delaySlides ? config.delaySlides * 1000 : 3000;
 
 var initOnboarding = function () {
-  var swiperElement = $(container).find('.swiper-container');
-  var swiper = new Swiper( swiperElement, {
+  var swiper = new Swiper( '.swiper-container', {
     direction: 'horizontal',
     loop: false,
     autoHeight: true,
-    pagination: '.swiper-pagination-' + id,
+    pagination: '.swiper-pagination-' + sliderId,
     paginationClickable: true,
-    nextButton: '.swiper-button-next-' + id,
-    prevButton: '.swiper-button-prev-' + id,
+    nextButton: '.swiper-button-next-' + sliderId,
+    prevButton: '.swiper-button-prev-' + sliderId,
     grabCursor: true
   });
-  $(container).removeClass('loading');
+  $('.onboarding-holder').removeClass('loading');
 
   swiper.update();
 
