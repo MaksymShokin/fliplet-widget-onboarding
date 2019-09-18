@@ -1,7 +1,7 @@
 Fliplet.Widget.instance('onboarding', function (config) {
-  var container = $('[data-onboarding-id="' + config.id + '"]');
   var widgetInstanceId = config.id;
-  var pvKey = 'fl-onboarding-layout-' + config.uuid;
+  var container = $('[data-onboarding-id="' + config.id + '"]');
+  var pvKey = 'fl-onboarding-layout-' + Fliplet.Widget.getUUID(widgetInstanceId);
   var delayTime = config.delaySlides ? config.delaySlides * 1000 : 3000;
 
   var initOnboarding = function () {
