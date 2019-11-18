@@ -354,7 +354,7 @@ var FlSlider = (function() {
       Fliplet.Widget.toggleCancelButton(false);
 
       window.addEventListener('message', function(event) {
-        if (event.data === 'cancel-button-pressed') {
+        if (event.data === 'cancel-button-pressed' && imageProvider) {
           Fliplet.Widget.toggleCancelButton(true);
           imageProvider.close();
           
@@ -385,10 +385,17 @@ var FlSlider = (function() {
     },
 
     initImageBgProvider: function() {
-      fullImageProvider = Fliplet.Widget.open('com.fliplet.image-manager', {
+      var filePickerData = {
+        selectFiles: data.fullImageConfig ? [data.fullImageConfig] : [],
+        selectMultiple: false,
+        type: 'image',
+        autoSelectOnUpload: true
+      };
+
+      fullImageProvider = Fliplet.Widget.open('com.fliplet.file-picker', {
         // Also send the data I have locally, so that
         // the interface gets repopulated with the same stuff
-        data: data.fullImageConfig,
+        data: filePickerData,
         // Events fired from the provider
         onEvent: function(event, data) {
           if (event === 'interface-validate') {
@@ -405,10 +412,14 @@ var FlSlider = (function() {
         if (event.data === 'cancel-button-pressed') {
           Fliplet.Widget.toggleCancelButton(true);
           fullImageProvider.close();
-          if (_.isEmpty(item.fullImageConfig)) {
+
+          if (_.isEmpty(data.fullImageConfig)) {
             $('.background-image .add-image-holder').find('.set-bg-image').text('Add image');
             $('.background-image .add-image-holder').find('.thumb-holder').addClass('hidden');
           }
+
+          Fliplet.Widget.resetSaveButtonLabel();
+          fullImageProvider = null;
         }
       });
 
@@ -417,9 +428,10 @@ var FlSlider = (function() {
       });
 
       fullImageProvider.then(function(results) {
-        if (results.data) {
-          data.fullImageConfig = results.data;
-          $('.background-image .thumb-image img').attr("src", results.data.thumbnail);
+        var resData = results.data[0];
+        if (resData) {
+          data.fullImageConfig = resData;
+          $('.background-image .thumb-image img').attr("src", resData.thumbnail);
           save();
         }
         fullImageProvider = null;
