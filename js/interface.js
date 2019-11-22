@@ -262,6 +262,7 @@ var FlSlider = (function() {
       data.skipLinkAction = $.extend(true, {
         action: 'screen',
         page: '',
+        omitPages: omitPages,
         transition: 'fade',
         options: {
           hideAction: true
