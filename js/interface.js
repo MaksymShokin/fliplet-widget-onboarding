@@ -303,6 +303,7 @@ var FlSlider = (function() {
       data.seenLinkAction = $.extend(true, {
         action: 'screen',
         page: '',
+        omitPages: omitPages,
         transition: 'fade',
         options: {
           hideAction: true
