@@ -1,6 +1,9 @@
 /* REMOVE MENUS */
-body.fl-with-top-menu {
-	padding-top: 0;
+body.fl-with-top-menu,
+html.web[data-has-notch] body,
+.supports-container .fl-page-content-wrapper {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
 }
 
 .fl-viewport-header,
@@ -12,7 +15,9 @@ body.fl-with-top-menu {
 /* Screen Defaults */
 
 .mode-interact .fl-widget-instance[data-name="Onboarding Slides"] {
-  position: static;
+	position: relative;
+	width: 100%;
+	height: 100vh;
 }
 
 /* ONBOARDING */
@@ -24,13 +29,6 @@ body.fl-with-top-menu {
 	background-position: center center;
 	background-size: cover;
 	background-repeat: no-repeat;
-
-	position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
   opacity: 1;
   transition: opacity 0.2s ease-out;
 }
