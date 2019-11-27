@@ -1,6 +1,8 @@
 /* REMOVE MENUS */
-body.fl-with-top-menu {
+body.fl-with-top-menu,
+html.web[data-has-notch] body {
 	padding-top: 0;
+	padding-bottom: 0;
 }
 
 .fl-viewport-header,
