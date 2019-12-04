@@ -32,8 +32,8 @@ html.web[data-has-notch] body,
 	right: 0;
 	bottom: 0;
 	left: 0;
-  opacity: 1;
-  transition: opacity 0.2s ease-out;
+	opacity: 1;
+	transition: opacity 0.2s ease-out;
 }
 
 .onboarding-wrapper {
