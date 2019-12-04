@@ -15,9 +15,7 @@ html.web[data-has-notch] body,
 /* Screen Defaults */
 
 .mode-interact .fl-widget-instance[data-name="Onboarding Slides"] {
-	position: relative;
-	width: 100%;
-	height: 100vh;
+	position: static;
 }
 
 /* ONBOARDING */
@@ -29,8 +27,13 @@ html.web[data-has-notch] body,
 	background-position: center center;
 	background-size: cover;
 	background-repeat: no-repeat;
-  opacity: 1;
-  transition: opacity 0.2s ease-out;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	opacity: 1;
+	transition: opacity 0.2s ease-out;
 }
 
 .onboarding-wrapper {
