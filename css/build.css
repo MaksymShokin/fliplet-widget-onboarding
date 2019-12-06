@@ -18,6 +18,10 @@ html.web[data-has-notch] body,
 	position: static;
 }
 
+.supports-container .fl-widget-instance[data-name="Onboarding Slides"] {
+	height: 100vh;
+}
+
 /* ONBOARDING */
 .mode-interact .onboarding-holder {
 	pointer-events: none;
