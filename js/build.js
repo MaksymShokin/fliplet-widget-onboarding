@@ -92,13 +92,13 @@ Fliplet.Widget.instance('onboarding', function (data) {
         return Fliplet.App.Storage.set(pvKey, {
           seen: true
         }).then(function() {
-          if (_.get(itemData, 'skipLinkAction') && !_.isEmpty(itemData.skipLinkAction)) {
+          if (_.get(itemData, 'linkAction') && !_.isEmpty(itemData.linkAction)) {
             Fliplet.Navigate.to(itemData.linkAction);
           }
         });
       }
 
-      if (_.get(itemData, 'skipLinkAction') && !_.isEmpty(itemData.skipLinkAction)) {
+      if (_.get(itemData, 'linkAction') && !_.isEmpty(itemData.linkAction)) {
         Fliplet.Navigate.to(itemData.linkAction);
       }
     });
