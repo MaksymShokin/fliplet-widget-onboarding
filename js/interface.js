@@ -474,7 +474,7 @@ var FlSlider = (function() {
     },
 
     checkPanelLength: function() {
-      if ($('.panel').length) {
+      if (data.items.length) {
         $('#slides').removeClass('list-items-empty');
       } else {
         $('#slides').addClass('list-items-empty');
