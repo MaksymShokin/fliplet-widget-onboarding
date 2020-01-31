@@ -327,6 +327,13 @@ var FlSlider = (function() {
       });
 
       skipSeenLinkActionProvider.then(function(result) {
+        if (!result.data.page || result.data.page === 'none') {
+          Fliplet.Modal.alert({
+            message: 'Please select a screen to continue'
+          });
+          return Promise.reject();
+        }
+
         data.seenLinkAction = result && result.data.action !== 'none' ? result.data : null;
         return Promise.resolve();
       });
