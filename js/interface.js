@@ -261,7 +261,7 @@ var FlSlider = (function() {
 
       data.skipLinkAction = $.extend(true, {
         action: 'screen',
-        page: '',
+        page: 'none',
         omitPages: omitPages,
         transition: 'fade',
         options: {
@@ -302,7 +302,7 @@ var FlSlider = (function() {
 
       data.seenLinkAction = $.extend(true, {
         action: 'screen',
-        page: '',
+        page: 'none',
         omitPages: omitPages,
         transition: 'fade',
         options: {
@@ -327,6 +327,13 @@ var FlSlider = (function() {
       });
 
       skipSeenLinkActionProvider.then(function(result) {
+        if (data.skipSeenEnabled && (!result.data.page || result.data.page === 'none')) {
+          Fliplet.Modal.alert({
+            message: 'Please configure a screen to redirect to.'
+          });
+          return Promise.reject();
+        }
+
         data.seenLinkAction = result && result.data.action !== 'none' ? result.data : null;
         return Promise.resolve();
       });
