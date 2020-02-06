@@ -17,7 +17,6 @@ var FlSlider = (function() {
   var accordionCollapsed = false;
   var $accordionContainer = $('#accordion');
 
-
   function makeid(length) {
     var text = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
