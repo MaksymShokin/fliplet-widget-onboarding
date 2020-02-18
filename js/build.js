@@ -1,11 +1,11 @@
-Fliplet.Widget.instance('onboarding', function (data) {
+Fliplet.Widget.instance('onboarding', function(data) {
   var $container = $(this);
   var widgetInstanceId = data.id;
   var pvKey = 'fl-onboarding-layout-' + data.uuid;
   var delayTime = data.delaySlides ? data.delaySlides * 1000 : 3000;
 
   function authenticateImages(onImageLoad) {
-    return Fliplet().then(function () {
+    return Fliplet().then(function() {
       if (_.get(data, 'fullImageConfig.url')
         && Fliplet.Media.isRemoteUrl(data.fullImageConfig.url)) {
         $container.css({
@@ -13,7 +13,7 @@ Fliplet.Widget.instance('onboarding', function (data) {
         });
       }
 
-      _.forEach(data.items, function (item) {
+      _.forEach(data.items, function(item) {
         if (!_.get(item, 'imageConf.url') || !Fliplet.Media.isRemoteUrl(item.imageConf.url)) {
           return;
         }
@@ -53,11 +53,11 @@ Fliplet.Widget.instance('onboarding', function (data) {
       swiper.update();
     });
 
-    Fliplet.Hooks.on('appearanceChanged', function () {
+    Fliplet.Hooks.on('appearanceChanged', function() {
       swiper.update();
     });
 
-    $container.find('.ob-skip span').click(function () {
+    $container.find('.ob-skip span').click(function() {
       Fliplet.Analytics.trackEvent({
         category: 'onboarding',
         action: 'skip'
@@ -78,9 +78,9 @@ Fliplet.Widget.instance('onboarding', function (data) {
       }
     });
 
-    $container.find('.btn[data-slide-button-id]').click(function (event) {
+    $container.find('.btn[data-slide-button-id]').click(function(event) {
       event.preventDefault();
-      var itemData = _.find(data.items,{ id: $(this).data('slide-button-id') });
+      var itemData = _.find(data.items, { id: $(this).data('slide-button-id') });
 
       Fliplet.Analytics.trackEvent({
         category: 'onboarding',
@@ -109,7 +109,7 @@ Fliplet.Widget.instance('onboarding', function (data) {
     Fliplet.App.Storage.get(pvKey).then(function(value) {
       if (value && value.seen && !Fliplet.Env.get('interact')) {
         setTimeout(function() {
-          Fliplet.Navigate.to(data.seenLinkAction).catch(function () {
+          Fliplet.Navigate.to(data.seenLinkAction).catch(function() {
             initOnboarding();
           });
         }, 800);
