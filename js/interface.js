@@ -640,6 +640,8 @@ var FlSlider = (function() {
   return FlSlider;
 })();
 
+var flSlider = new FlSlider(data);
+
 Fliplet.Widget.onSaveRequest(function() {
   if (imageProvider) {
     imageProvider.forwardSaveRequest();
