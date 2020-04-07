@@ -165,7 +165,7 @@ var FlSlider = (function() {
     },
 
     loadFullscreenImage: function() {
-      if (typeof data.fullImageConfig !== 'undefined' || data.fullImageConfig !== null) {
+      if (data.fullImageConfig) {
         $('.background-image .set-bg-image').text('Replace image');
         $('.background-image .thumb-holder').removeClass('hidden');
         $('.background-image .thumb-image img').attr('src', data.fullImageConfig.url);
